@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "312093395772",
+    "firebase_url": "https://anime-test-f68fb.firebaseio.com",
+    "project_id": "anime-test-f68fb",
+    "storage_bucket": "anime-test-f68fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:312093395772:android:43813dfb256beb451c6c39",
+        "android_client_info": {
+          "package_name": "ussrfantom.com.example.animetest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "312093395772-f7i98upkglvuv147f1inhel75rr44rmt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ussrfantom.com.example.animetest",
+            "certificate_hash": "659e13ef22be705728cfcf322a17db541d3252ac"
+          }
+        },
+        {
+          "client_id": "312093395772-orsdqkeidkadjga9dkjgutdt9qnota0f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTg37qbVuNi2VLzWCc6bBN3VDGEvkcgJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "312093395772-orsdqkeidkadjga9dkjgutdt9qnota0f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
