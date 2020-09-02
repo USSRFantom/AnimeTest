@@ -2,5 +2,9 @@
     <string name="app_name">Anime Test</string>
     <string name="start">Начать</string>
     <string name="back">Назад</string>
+    <string name="level">Уровень:</string>
+    <string name="answer1">Ответ 1</string>
+    <string name="answer2">Ответ 2</string>
+    <string name="answer3">Ответ 3</string>
 
 </resources>

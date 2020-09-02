@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
+
+import java.util.logging.Level;
 
 public class LevelsActivity extends AppCompatActivity {
 
@@ -16,6 +19,7 @@ public class LevelsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_levels);
         Button button_back = (Button) findViewById(R.id.button_back);
+        TextView textView1 = findViewById(R.id.textView1);
 
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,11 +29,30 @@ public class LevelsActivity extends AppCompatActivity {
             }
         });
 
+
+        //переход на первый уровень
+
+        textView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try{
+                    Intent intent = new Intent(LevelsActivity.this, level1.class);
+                    startActivity(intent);finish();
+                }catch (Exception e){
+                    //
+                }
+            }
+        });
+
+
+
         // скрываем меню
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
     }
+
+
 
     //системная кнопка
     @Override
