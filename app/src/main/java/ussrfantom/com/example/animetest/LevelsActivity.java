@@ -37,7 +37,8 @@ public class LevelsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try{
                     Intent intent = new Intent(LevelsActivity.this, level1.class);
-                    startActivity(intent);finish();
+                    startActivity(intent);
+                    finish();
                 }catch (Exception e){
                     //
                 }
