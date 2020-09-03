@@ -1,5 +1,6 @@
 package ussrfantom.com.example.animetest;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
@@ -14,6 +15,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.squareup.picasso.Picasso;
+
+import java.util.Map;
 import java.util.logging.Level;
 
 public class level1 extends AppCompatActivity {
@@ -23,9 +32,13 @@ public class level1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.universal);
+        final Button button1 = findViewById(R.id.button_question1);
+        final Button button2 = findViewById(R.id.button_question2);
+        final Button button3 = findViewById(R.id.button_question3);
+        TextView text_levels = findViewById(R.id.text_levels);
+        text_levels.setText(R.string.level_1);
         final ImageView img_question = findViewById(R.id.imageView_question);
-
-        //код скругляющий углы у картинки
+    //код скругляющий углы у картинки
         img_question.setClipToOutline(true);
 
         //Разворачиваем игру на весь экран
@@ -88,6 +101,34 @@ public class level1 extends AppCompatActivity {
                 }
             }
         });
+
+
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("1")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()){
+                            System.out.println("Успешно!<---------------------------------------------------");
+                            QuerySnapshot querySnapshot = task.getResult();
+                            if (querySnapshot == null) return;
+                            for(QueryDocumentSnapshot documentSnapshot : querySnapshot){
+                                Map<String, Object> level = documentSnapshot.getData();
+                                button1.setText(level.get("1").toString());
+                                button2.setText(level.get("2").toString());
+                                button3.setText(level.get("3").toString());
+                                String img = (level.get("4").toString());
+                                System.out.println(img);
+                                Picasso.get().load(level.get("4").toString()).into(img_question);
+                            }
+                        }else{
+                            System.out.println("Провал!<---------------------------------------------------");
+                        }
+                    }
+                });
+
     }
 
     //системная кнопка назад, для возврата к уровням

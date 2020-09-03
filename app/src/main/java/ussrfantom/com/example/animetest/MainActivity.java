@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
         Button buttonStart = findViewById(R.id.buttonStart);
+
+
         //нажатие кнопки
         buttonStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         // скрываем меню
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        //массив для отображения списка через чтом ожно регаться
+        //массив для отображения списка через что можно регаться
         List<AuthUI.IdpConfig> providers = Arrays.asList(
                 new AuthUI.IdpConfig.EmailBuilder().build(),
                 new AuthUI.IdpConfig.GoogleBuilder().build());
@@ -56,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                         .setAvailableProviders(providers)
                         .build(),
                 RC_SIGN_IN);
+
     }
 
     @Override  // Проверка
