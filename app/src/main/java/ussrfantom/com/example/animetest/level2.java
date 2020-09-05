@@ -1,8 +1,5 @@
 package ussrfantom.com.example.animetest;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -16,6 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -24,11 +24,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
 import java.util.Map;
-import java.util.logging.Level;
 
-public class level1 extends AppCompatActivity {
+public class level2 extends AppCompatActivity {
     Dialog dialog;
-    Dialog dialogEnd;
     public int count; //счетчик
     public
     Button button1;
@@ -72,7 +70,7 @@ public class level1 extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     //возврат в меню уровней
-                    Intent intent = new Intent(level1.this, LevelsActivity.class);
+                    Intent intent = new Intent(level2.this, LevelsActivity.class);
                     startActivity(intent);
                     finish();
                 }catch (Exception e){
@@ -100,58 +98,13 @@ public class level1 extends AppCompatActivity {
         dialog.show();//запуск диалога
 
 
-
-        //Вызов диалогового окна в конце игры
-        dialogEnd = new Dialog(this);//создаем новое диалоговое окно
-        dialogEnd.requestWindowFeature(Window.FEATURE_NO_TITLE);//скрываем заголовок
-        dialogEnd.setContentView(R.layout.dialogend);
-        dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));//прозрачный фон
-        dialogEnd.setCancelable(false); //нельзя закрыть кнопкой назат
-
-        //кнопка закрытия
-        TextView btnclose2 = dialogEnd.findViewById(R.id.btnclose);
-        btnclose2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    //возврат в меню уровней
-                    Intent intent = new Intent(level1.this, LevelsActivity.class);
-                    startActivity(intent);
-                    finish();
-                }catch (Exception e){
-
-                }
-                dialogEnd.dismiss();//закрываем диалоговое окно
-            }
-        });
-
-        //кнопка продолжить
-        Button buttoncontinue2 = dialogEnd.findViewById(R.id.btncontinue);
-        buttoncontinue2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    Intent intet = new Intent(level1.this, level2.class);
-                    startActivity(intet);
-                    finish();
-                }catch (Exception e){
-
-                }
-                dialogEnd.dismiss();
-            }
-        });
-
-
-
-
-
         //Кнопка назад в уровне
         Button buttonback  = findViewById(R.id.buttonBack);
         buttonback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    Intent intent = new Intent(level1.this, LevelsActivity.class);
+                    Intent intent = new Intent(level2.this, LevelsActivity.class);
                     startActivity(intent);
                     finish();
                 }catch (Exception e){
@@ -166,7 +119,7 @@ public class level1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (button1.getText().toString().equals(truAnswer)){
-                    if (count < 19){
+                    if (count < 20){
                         count++;
                         TextView tv = findViewById(progress[count]);
                         tv.setBackgroundResource(R.drawable.style_points_green);
@@ -174,10 +127,10 @@ public class level1 extends AppCompatActivity {
                         String over = Integer.toString(count);
                         getData(over);
                     }else{
-                        dialogEnd.show();
+
                     }
                 }else{
-                    if (count < 19){
+                    if (count < 20){
                         count++;
                         TextView tv = findViewById(progress[count]);
                         tv.setBackgroundResource(R.drawable.style_points_red);
@@ -185,7 +138,7 @@ public class level1 extends AppCompatActivity {
                         String over = Integer.toString(count);
                         getData(over);
                     }else{
-                        dialogEnd.show();
+
                     }
                 }
             }
@@ -196,7 +149,7 @@ public class level1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (button2.getText().toString().equals(truAnswer)){
-                    if (count < 19){
+                    if (count < 20){
                         count++;
                         TextView tv = findViewById(progress[count]);
                         tv.setBackgroundResource(R.drawable.style_points_green);
@@ -204,10 +157,10 @@ public class level1 extends AppCompatActivity {
                         String over = Integer.toString(count);
                         getData(over);
                     }else{
-                        dialogEnd.show();
+
                     }
                 }else{
-                    if (count < 19){
+                    if (count < 20){
                         count++;
                         TextView tv = findViewById(progress[count]);
                         tv.setBackgroundResource(R.drawable.style_points_red);
@@ -215,7 +168,7 @@ public class level1 extends AppCompatActivity {
                         String over = Integer.toString(count);
                         getData(over);
                     }else{
-                        dialogEnd.show();
+
                     }
                 }
             }
@@ -227,7 +180,7 @@ public class level1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (button3.getText().toString().equals(truAnswer)){
-                    if (count < 19){
+                    if (count < 20){
                         count++;
                         TextView tv = findViewById(progress[count]);
                         tv.setBackgroundResource(R.drawable.style_points_green);
@@ -235,10 +188,10 @@ public class level1 extends AppCompatActivity {
                         String over = Integer.toString(count);
                         getData(over);
                     }else{
-                        dialogEnd.show();
+
                     }
                 }else{
-                    if (count < 19){
+                    if (count < 20){
                         count++;
                         TextView tv = findViewById(progress[count]);
                         tv.setBackgroundResource(R.drawable.style_points_red);
@@ -246,7 +199,7 @@ public class level1 extends AppCompatActivity {
                         String over = Integer.toString(count);
                         getData(over);
                     }else{
-                        dialogEnd.show();
+
                     }
                 }
             }
@@ -263,7 +216,7 @@ public class level1 extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         try {
-            Intent intent = new Intent(level1.this, LevelsActivity.class);
+            Intent intent = new Intent(level2.this, LevelsActivity.class);
             startActivity(intent);
             finish();
         }catch (Exception e){
