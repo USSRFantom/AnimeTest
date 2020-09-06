@@ -106,6 +106,7 @@ public class level1 extends AppCompatActivity {
         dialogEnd.requestWindowFeature(Window.FEATURE_NO_TITLE);//скрываем заголовок
         dialogEnd.setContentView(R.layout.dialogend);
         dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));//прозрачный фон
+        dialogEnd.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT); //на весь экран
         dialogEnd.setCancelable(false); //нельзя закрыть кнопкой назат
 
         //кнопка закрытия

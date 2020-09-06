@@ -20,6 +20,8 @@ public class LevelsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_levels);
         Button button_back = (Button) findViewById(R.id.button_back);
         TextView textView1 = findViewById(R.id.textView1);
+        TextView textView2 = findViewById(R.id.textView2);
+        TextView textView3 = findViewById(R.id.textView3);
 
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +46,35 @@ public class LevelsActivity extends AppCompatActivity {
                 }
             }
         });
+
+            //переход на второй уровень
+        textView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try{
+                    Intent intent = new Intent(LevelsActivity.this, level2.class);
+                    startActivity(intent);
+                    finish();
+                }catch (Exception e){
+                    //
+                }
+            }
+        });
+
+        //переход на третий уровень
+        textView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try{
+                    Intent intent = new Intent(LevelsActivity.this, level3.class);
+                    startActivity(intent);
+                    finish();
+                }catch (Exception e){
+                    //
+                }
+            }
+        });
+
 
 
 
