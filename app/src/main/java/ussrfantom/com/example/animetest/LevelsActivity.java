@@ -22,6 +22,9 @@ public class LevelsActivity extends AppCompatActivity {
         TextView textView1 = findViewById(R.id.textView1);
         TextView textView2 = findViewById(R.id.textView2);
         TextView textView3 = findViewById(R.id.textView3);
+        TextView textView4 = findViewById(R.id.textView4);
+        TextView textView5 = findViewById(R.id.textView5);
+        TextView textView6 = findViewById(R.id.textView6);
 
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +77,51 @@ public class LevelsActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //переход на четвертый уровень
+        textView4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try{
+                    Intent intent = new Intent(LevelsActivity.this, level4.class);
+                    startActivity(intent);
+                    finish();
+                }catch (Exception e){
+                    //
+                }
+            }
+        });
+
+        //переход на пятый уровень
+        textView5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try{
+                    Intent intent = new Intent(LevelsActivity.this, level5.class);
+                    startActivity(intent);
+                    finish();
+                }catch (Exception e){
+                    //
+                }
+            }
+        });
+
+        //переход на шестой уровень
+        textView6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try{
+                    Intent intent = new Intent(LevelsActivity.this, level6.class);
+                    startActivity(intent);
+                    finish();
+                }catch (Exception e){
+                    //
+                }
+            }
+        });
+
+
+
 
 
 

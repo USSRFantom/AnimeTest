@@ -25,11 +25,11 @@ import com.squareup.picasso.Picasso;
 
 import java.util.Map;
 
-public class level3 extends AppCompatActivity {
+public class level5 extends AppCompatActivity {
     Dialog dialog;
     Dialog dialogEnd;
     public int count; //счетчик
-    public int countDatabase = 40;  //<-----------------------------------------------
+    public int countDatabase = 80;  //<-----------------------------------------------
     public
     Button button1;
     Button button2;
@@ -44,7 +44,7 @@ public class level3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.universal);
         TextView text_levels = findViewById(R.id.text_levels);
-        text_levels.setText(R.string.level_3);  //<-----------------------------------------------
+        text_levels.setText(R.string.level_5);  //<-----------------------------------------------
 
 
        img_question = findViewById(R.id.imageView_question);
@@ -61,14 +61,14 @@ public class level3 extends AppCompatActivity {
         //Вызов диалогового окна в начале игры
         dialog = new Dialog(this);//создаем новое диалоговое окно
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);//скрываем заголовок
-        dialog.setContentView(R.layout.previewdialog31);//<---------------------------------------------
+        dialog.setContentView(R.layout.previewdialog51);//<---------------------------------------------
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));//прозрачный фон
         dialog.setCancelable(false); //нельзя закрыть кнопкой назат
 
         //Вызов диалогового окна в конце игры
         dialogEnd = new Dialog(this);//создаем новое диалоговое окно
         dialogEnd.requestWindowFeature(Window.FEATURE_NO_TITLE);//скрываем заголовок
-        dialogEnd.setContentView(R.layout.dialogend3);//<---------------------------------------------
+        dialogEnd.setContentView(R.layout.dialogend5);//<---------------------------------------------
         dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));//прозрачный фон
         dialogEnd.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT); //на весь экран
         dialogEnd.setCancelable(false); //нельзя закрыть кнопкой назат
@@ -80,7 +80,7 @@ public class level3 extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     //возврат в меню уровней
-                    Intent intent = new Intent(level3.this, LevelsActivity.class);
+                    Intent intent = new Intent(level5.this, LevelsActivity.class);
                     startActivity(intent);
                     finish();
                 }catch (Exception e){
@@ -109,7 +109,7 @@ public class level3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    Intent intet = new Intent(level3.this, level4.class);
+                    Intent intet = new Intent(level5.this, level6.class);
                     startActivity(intet);
                     finish();
                 }catch (Exception e){
@@ -129,7 +129,7 @@ public class level3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    Intent intent = new Intent(level3.this, LevelsActivity.class);
+                    Intent intent = new Intent(level5.this, LevelsActivity.class);
                     startActivity(intent);
                     finish();
                 }catch (Exception e){
@@ -240,14 +240,14 @@ public class level3 extends AppCompatActivity {
 
 
 
-        getData("40");//<-----------------------------------------------
+        getData("80");//<-----------------------------------------------
     }
 
     //системная кнопка назад, для возврата к уровням
     @Override
     public void onBackPressed() {
         try {
-            Intent intent = new Intent(level3.this, LevelsActivity.class);
+            Intent intent = new Intent(level5.this, LevelsActivity.class);
             startActivity(intent);
             finish();
         }catch (Exception e){
