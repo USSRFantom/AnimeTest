@@ -29,7 +29,7 @@ public class level8 extends AppCompatActivity {
     Dialog dialog;
     Dialog dialogEnd;
     public int count; //счетчик
-    public int countDatabase = 100;  //<-----------------------------------------------
+    public int countDatabase = 140;  //<-----------------------------------------------
     public
     Button button1;
     Button button2;
@@ -44,7 +44,7 @@ public class level8 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.universal);
         TextView text_levels = findViewById(R.id.text_levels);
-        text_levels.setText(R.string.level_6);  //<-----------------------------------------------
+        text_levels.setText(R.string.level_8);  //<-----------------------------------------------
 
 
        img_question = findViewById(R.id.imageView_question);
@@ -61,14 +61,14 @@ public class level8 extends AppCompatActivity {
         //Вызов диалогового окна в начале игры
         dialog = new Dialog(this);//создаем новое диалоговое окно
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);//скрываем заголовок
-        dialog.setContentView(R.layout.previewdialog61);//<---------------------------------------------
+        dialog.setContentView(R.layout.previewdialog81);//<---------------------------------------------
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));//прозрачный фон
         dialog.setCancelable(false); //нельзя закрыть кнопкой назат
 
         //Вызов диалогового окна в конце игры
         dialogEnd = new Dialog(this);//создаем новое диалоговое окно
         dialogEnd.requestWindowFeature(Window.FEATURE_NO_TITLE);//скрываем заголовок
-        dialogEnd.setContentView(R.layout.dialogend6);//<---------------------------------------------
+        dialogEnd.setContentView(R.layout.dialogend8);//<---------------------------------------------
         dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));//прозрачный фон
         dialogEnd.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT); //на весь экран
         dialogEnd.setCancelable(false); //нельзя закрыть кнопкой назат
@@ -109,7 +109,7 @@ public class level8 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    Intent intet = new Intent(level8.this, FinishActivity.class);
+                    Intent intet = new Intent(level8.this, level9.class);
                     startActivity(intet);
                     finish();
                 }catch (Exception e){
@@ -240,7 +240,7 @@ public class level8 extends AppCompatActivity {
 
 
 
-        getData("100");//<-----------------------------------------------
+        getData("140");//<-----------------------------------------------
     }
 
     //системная кнопка назад, для возврата к уровням

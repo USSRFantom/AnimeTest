@@ -109,7 +109,7 @@ public class level6 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    Intent intet = new Intent(level6.this, FinishActivity.class);
+                    Intent intet = new Intent(level6.this, level7.class);
                     startActivity(intet);
                     finish();
                 }catch (Exception e){

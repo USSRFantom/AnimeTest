@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
         Button buttonStart = findViewById(R.id.buttonStart);
+        //firebase.setCollection();<-----добавление коллекций
 
 
         //нажатие кнопки
