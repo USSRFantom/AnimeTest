@@ -25,7 +25,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.Map;
 
-public class level6 extends AppCompatActivity {
+public class level8 extends AppCompatActivity {
     Dialog dialog;
     Dialog dialogEnd;
     public int count; //счетчик
@@ -80,7 +80,7 @@ public class level6 extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     //возврат в меню уровней
-                    Intent intent = new Intent(level6.this, LevelsActivity.class);
+                    Intent intent = new Intent(level8.this, LevelsActivity.class);
                     startActivity(intent);
                     finish();
                 }catch (Exception e){
@@ -109,7 +109,7 @@ public class level6 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    Intent intet = new Intent(level6.this, FinishActivity.class);
+                    Intent intet = new Intent(level8.this, FinishActivity.class);
                     startActivity(intet);
                     finish();
                 }catch (Exception e){
@@ -129,7 +129,7 @@ public class level6 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    Intent intent = new Intent(level6.this, LevelsActivity.class);
+                    Intent intent = new Intent(level8.this, LevelsActivity.class);
                     startActivity(intent);
                     finish();
                 }catch (Exception e){
@@ -247,7 +247,7 @@ public class level6 extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         try {
-            Intent intent = new Intent(level6.this, LevelsActivity.class);
+            Intent intent = new Intent(level8.this, LevelsActivity.class);
             startActivity(intent);
             finish();
         }catch (Exception e){

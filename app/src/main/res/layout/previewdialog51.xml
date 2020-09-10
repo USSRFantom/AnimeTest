@@ -33,7 +33,7 @@
             android:layout_marginTop="10dp"
             android:layout_weight="60"
             android:scaleType="centerCrop"
-            android:src="@drawable/mayri22"/>
+            android:src="@drawable/mayri21"/>
 
         <ScrollView
             android:layout_width="match_parent"
@@ -50,7 +50,7 @@
                     android:layout_height="0dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="30"
-                    android:text="@string/levele5end"
+                    android:text="@string/levele5start"
                     android:textColor="@color/colorBlack"
                     android:textSize="24sp" />
             </LinearLayout>
