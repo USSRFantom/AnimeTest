@@ -32,7 +32,6 @@ public class level1 extends AppCompatActivity {
     Dialog dialogfailed;
     public int count; //счетчик
     public int answer = 0;
-    public
     Button button1;
     Button button2;
     Button button3;
