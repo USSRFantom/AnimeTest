@@ -29,7 +29,9 @@ import java.util.logging.Level;
 public class level1 extends AppCompatActivity {
     Dialog dialog;
     Dialog dialogEnd;
+    Dialog dialogfailed;
     public int count; //счетчик
+    public int answer = 0;
     public
     Button button1;
     Button button2;
@@ -109,6 +111,15 @@ public class level1 extends AppCompatActivity {
         dialogEnd.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT); //на весь экран
         dialogEnd.setCancelable(false); //нельзя закрыть кнопкой назат
 
+        //Вызов диалогового проваленной игры
+        dialogfailed = new Dialog(this);//создаем новое диалоговое окно
+        dialogfailed.requestWindowFeature(Window.FEATURE_NO_TITLE);//скрываем заголовок
+        dialogfailed.setContentView(R.layout.dialogfailed);
+        dialogfailed.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));//прозрачный фон
+        dialogfailed.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT); //на весь экран
+        dialogfailed.setCancelable(false); //нельзя закрыть кнопкой назат
+
+
         //кнопка закрытия
         TextView btnclose2 = dialogEnd.findViewById(R.id.btnclose);
         btnclose2.setOnClickListener(new View.OnClickListener() {
@@ -127,8 +138,8 @@ public class level1 extends AppCompatActivity {
         });
 
         //кнопка продолжить
-        Button buttoncontinue2 = dialogEnd.findViewById(R.id.btncontinue);
-        buttoncontinue2.setOnClickListener(new View.OnClickListener() {
+        Button buttoncontinue3 = dialogEnd.findViewById(R.id.btncontinue);
+        buttoncontinue3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
@@ -141,6 +152,43 @@ public class level1 extends AppCompatActivity {
                 dialogEnd.dismiss();
             }
         });
+
+
+        //кнопка закрытия
+        TextView btnclose3 = dialogfailed.findViewById(R.id.btnclose3);
+        btnclose3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    //возврат в меню уровней
+                    Intent intent = new Intent(level1.this, LevelsActivity.class);
+                    startActivity(intent);
+                    finish();
+                }catch (Exception e){
+
+                }
+                dialogfailed.dismiss();//закрываем диалоговое окно
+            }
+        });
+
+        //кнопка продолжить
+        Button buttoncontinue2 = dialogfailed.findViewById(R.id.btncontinue3);
+        buttoncontinue2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intet = new Intent(level1.this, LevelsActivity.class);
+                    startActivity(intet);
+                    finish();
+                }catch (Exception e){
+
+                }
+                dialogfailed.dismiss();
+            }
+        });
+
+
+
 
 
 
@@ -169,13 +217,14 @@ public class level1 extends AppCompatActivity {
                 if (button1.getText().toString().equals(truAnswer)){
                     if (count < 19){
                         count++;
+                        answer++;
                         TextView tv = findViewById(progress[count]);
                         tv.setBackgroundResource(R.drawable.style_points_green);
                         Toast.makeText(getApplicationContext(), "Верно", Toast.LENGTH_SHORT).show();
                         String over = Integer.toString(count);
                         getData(over);
                     }else{
-                        dialogEnd.show();
+                        trueAnswer();
                     }
                 }else{
                     if (count < 19){
@@ -186,7 +235,7 @@ public class level1 extends AppCompatActivity {
                         String over = Integer.toString(count);
                         getData(over);
                     }else{
-                        dialogEnd.show();
+                        trueAnswer();
                     }
                 }
             }
@@ -199,13 +248,14 @@ public class level1 extends AppCompatActivity {
                 if (button2.getText().toString().equals(truAnswer)){
                     if (count < 19){
                         count++;
+                        answer++;
                         TextView tv = findViewById(progress[count]);
                         tv.setBackgroundResource(R.drawable.style_points_green);
                         Toast.makeText(getApplicationContext(), "Верно", Toast.LENGTH_SHORT).show();
                         String over = Integer.toString(count);
                         getData(over);
                     }else{
-                        dialogEnd.show();
+                        trueAnswer();
                     }
                 }else{
                     if (count < 19){
@@ -216,7 +266,7 @@ public class level1 extends AppCompatActivity {
                         String over = Integer.toString(count);
                         getData(over);
                     }else{
-                        dialogEnd.show();
+                        trueAnswer();
                     }
                 }
             }
@@ -230,13 +280,14 @@ public class level1 extends AppCompatActivity {
                 if (button3.getText().toString().equals(truAnswer)){
                     if (count < 19){
                         count++;
+                        answer++;
                         TextView tv = findViewById(progress[count]);
                         tv.setBackgroundResource(R.drawable.style_points_green);
                         Toast.makeText(getApplicationContext(), "Верно", Toast.LENGTH_SHORT).show();
                         String over = Integer.toString(count);
                         getData(over);
                     }else{
-                        dialogEnd.show();
+                        trueAnswer();
                     }
                 }else{
                     if (count < 19){
@@ -247,7 +298,7 @@ public class level1 extends AppCompatActivity {
                         String over = Integer.toString(count);
                         getData(over);
                     }else{
-                        dialogEnd.show();
+                        trueAnswer();
                     }
                 }
             }
@@ -301,5 +352,15 @@ public class level1 extends AppCompatActivity {
                     }
                 });
 
+    }
+
+    public void trueAnswer (){
+        if (answer > 15){
+            dialogEnd.show();
+            System.out.println(answer + " <--------------------------------");
+        }else{
+            dialogfailed.show();
+            System.out.println(answer + " <--------------------------------");
+        }
     }
 }
