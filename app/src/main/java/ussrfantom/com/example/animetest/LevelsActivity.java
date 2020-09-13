@@ -3,6 +3,7 @@ package ussrfantom.com.example.animetest;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -18,6 +19,9 @@ public class LevelsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_levels);
+        SharedPreferences save = getSharedPreferences("Save", MODE_PRIVATE);
+        final int level = save.getInt("Level", 1);
+
         Button button_back = (Button) findViewById(R.id.button_back);
         TextView textView1 = findViewById(R.id.textView1);
         TextView textView2 = findViewById(R.id.textView2);
@@ -44,9 +48,13 @@ public class LevelsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try{
-                    Intent intent = new Intent(LevelsActivity.this, level1.class);
-                    startActivity(intent);
-                    finish();
+                    if (level<=1) {
+                        Intent intent = new Intent(LevelsActivity.this, level1.class);
+                        startActivity(intent);
+                        finish();
+                    }else{
+                        //пусто
+                    }
                 }catch (Exception e){
                     //
                 }
@@ -58,9 +66,13 @@ public class LevelsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try{
+                    if (level>=1) {
                     Intent intent = new Intent(LevelsActivity.this, level2.class);
                     startActivity(intent);
                     finish();
+                    }else{
+                        //пусто
+                    }
                 }catch (Exception e){
                     //
                 }
@@ -72,9 +84,13 @@ public class LevelsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try{
+                    if (level>=1) {
                     Intent intent = new Intent(LevelsActivity.this, level3.class);
                     startActivity(intent);
                     finish();
+                }else{
+                    //пусто
+                }
                 }catch (Exception e){
                     //
                 }
@@ -86,9 +102,13 @@ public class LevelsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try{
+                    if (level>=1) {
                     Intent intent = new Intent(LevelsActivity.this, level4.class);
                     startActivity(intent);
                     finish();
+                }else{
+                //пусто
+            }
                 }catch (Exception e){
                     //
                 }
@@ -100,9 +120,13 @@ public class LevelsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try{
+                    if (level>=1) {
                     Intent intent = new Intent(LevelsActivity.this, level5.class);
                     startActivity(intent);
                     finish();
+        }else{
+        //пусто
+        }
                 }catch (Exception e){
                     //
                 }
@@ -114,9 +138,13 @@ public class LevelsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try{
+                    if (level>=1) {
                     Intent intent = new Intent(LevelsActivity.this, level6.class);
                     startActivity(intent);
                     finish();
+        }else{
+        //пусто
+        }
                 }catch (Exception e){
                     //
                 }
@@ -128,9 +156,13 @@ public class LevelsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try{
+                    if (level>=1) {
                     Intent intent = new Intent(LevelsActivity.this, level7.class);
                     startActivity(intent);
                     finish();
+        }else{
+        //пусто
+        }
                 }catch (Exception e){
                     //
                 }
@@ -142,9 +174,13 @@ public class LevelsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try{
+                    if (level>=1) {
                     Intent intent = new Intent(LevelsActivity.this, level8.class);
                     startActivity(intent);
                     finish();
+        }else{
+        //пусто
+        }
                 }catch (Exception e){
                     //
                 }
@@ -156,16 +192,35 @@ public class LevelsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try{
+                    if (level<=1) {
                     Intent intent = new Intent(LevelsActivity.this, level9.class);
                     startActivity(intent);
                     finish();
+        }else{
+        //пусто
+        }
                 }catch (Exception e){
                     //
                 }
             }
         });
 
+        final int [] X = {
+          R.id.textView1,
+        R.id.textView2,
+        R.id.textView3,
+        R.id.textView4,
+        R.id.textView5,
+        R.id.textView6,
+        R.id.textView7,
+        R.id.textView8,
+        R.id.textView9,
+        };
 
+        for (int i = 1; i < level; i++){
+            TextView tv = findViewById(X[i]);
+            tv.setText("" + (i+1));
+        }
 
 
 

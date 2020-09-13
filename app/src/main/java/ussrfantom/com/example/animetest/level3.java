@@ -2,6 +2,7 @@ package ussrfantom.com.example.animetest;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -331,6 +332,15 @@ public class level3 extends AppCompatActivity {
 
     public void trueAnswer (){
         if (answer > 15){
+            SharedPreferences save = getSharedPreferences("Save", MODE_PRIVATE);
+            final int level = save.getInt("Level", 1);
+            if (level>3){
+
+            }else{
+                SharedPreferences.Editor editor = save.edit();
+                editor.putInt("Level", 4);
+                editor.commit();
+            }
             dialogEnd.show();
             System.out.println(answer + " <--------------------------------");
         }else{
