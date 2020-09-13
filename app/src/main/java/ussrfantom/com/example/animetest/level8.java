@@ -28,9 +28,10 @@ import java.util.Map;
 public class level8 extends AppCompatActivity {
     Dialog dialog;
     Dialog dialogEnd;
+    Dialog dialogfailed;
     public int count; //счетчик
     public int countDatabase = 140;  //<-----------------------------------------------
-    public
+    public int answer = 0;
     Button button1;
     Button button2;
     Button button3;
@@ -72,6 +73,13 @@ public class level8 extends AppCompatActivity {
         dialogEnd.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));//прозрачный фон
         dialogEnd.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT); //на весь экран
         dialogEnd.setCancelable(false); //нельзя закрыть кнопкой назат
+
+        dialogfailed = new Dialog(this);//создаем новое диалоговое окно
+        dialogfailed.requestWindowFeature(Window.FEATURE_NO_TITLE);//скрываем заголовок
+        dialogfailed.setContentView(R.layout.dialogfailed3);
+        dialogfailed.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));//прозрачный фон
+        dialogfailed.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT); //на весь экран
+        dialogfailed.setCancelable(false); //нельзя закрыть кнопкой назат
 
         //кнопка закрытия
         TextView btnclose = dialog.findViewById(R.id.btnclose);
@@ -118,6 +126,38 @@ public class level8 extends AppCompatActivity {
                 dialogEnd.dismiss();
             }
         });
+        TextView btnclose3 = dialogfailed.findViewById(R.id.btnclose3);
+        btnclose3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    //возврат в меню уровней
+                    Intent intent = new Intent(level8.this, LevelsActivity.class);
+                    startActivity(intent);
+                    finish();
+                }catch (Exception e){
+
+                }
+                dialogfailed.dismiss();//закрываем диалоговое окно
+            }
+        });
+
+        //кнопка продолжить
+        Button buttoncontinue3 = dialogfailed.findViewById(R.id.btncontinue3);
+        buttoncontinue3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intet = new Intent(level8.this, LevelsActivity.class);
+                    startActivity(intet);
+                    finish();
+                }catch (Exception e){
+
+                }
+                dialogfailed.dismiss();
+            }
+        });
+
 
 
         dialog.show();//запуск диалога
@@ -146,6 +186,7 @@ public class level8 extends AppCompatActivity {
                 if (button1.getText().toString().equals(truAnswer)){
                     if (count < 19){
                         count++;
+                        answer++;
                         countDatabase++;
                         TextView tv = findViewById(progress[count]);
                         tv.setBackgroundResource(R.drawable.style_points_green);
@@ -153,7 +194,7 @@ public class level8 extends AppCompatActivity {
                         String over = Integer.toString(countDatabase);
                         getData(over);
                     }else{
-                        dialogEnd.show();
+                        trueAnswer();
                     }
                 }else{
                     if (count < 19){
@@ -165,7 +206,7 @@ public class level8 extends AppCompatActivity {
                         String over = Integer.toString(countDatabase);
                         getData(over);
                     }else{
-                        dialogEnd.show();
+                        trueAnswer();
                     }
                 }
             }
@@ -178,6 +219,7 @@ public class level8 extends AppCompatActivity {
                 if (button2.getText().toString().equals(truAnswer)){
                     if (count < 19){
                         count++;
+                        answer++;
                         countDatabase++;
                         TextView tv = findViewById(progress[count]);
                         tv.setBackgroundResource(R.drawable.style_points_green);
@@ -185,7 +227,7 @@ public class level8 extends AppCompatActivity {
                         String over = Integer.toString(countDatabase);
                         getData(over);
                     }else{
-                        dialogEnd.show();
+                        trueAnswer();
                     }
                 }else{
                     if (count < 19){
@@ -197,7 +239,7 @@ public class level8 extends AppCompatActivity {
                         String over = Integer.toString(countDatabase);
                         getData(over);
                     }else{
-                        dialogEnd.show();
+                        trueAnswer();
                     }
                 }
             }
@@ -211,6 +253,7 @@ public class level8 extends AppCompatActivity {
                 if (button3.getText().toString().equals(truAnswer)){
                     if (count < 19){
                         count++;
+                        answer++;
                         countDatabase++;
                         TextView tv = findViewById(progress[count]);
                         tv.setBackgroundResource(R.drawable.style_points_green);
@@ -218,7 +261,7 @@ public class level8 extends AppCompatActivity {
                         String over = Integer.toString(countDatabase);
                         getData(over);
                     }else{
-                        dialogEnd.show();
+                        trueAnswer();
                     }
                 }else{
                     if (count < 19){
@@ -230,7 +273,7 @@ public class level8 extends AppCompatActivity {
                         String over = Integer.toString(countDatabase);
                         getData(over);
                     }else{
-                        dialogEnd.show();
+                        trueAnswer();
                     }
                 }
             }
@@ -285,4 +328,14 @@ public class level8 extends AppCompatActivity {
                 });
 
     }
+    public void trueAnswer (){
+        if (answer > 15){
+            dialogEnd.show();
+            System.out.println(answer + " <--------------------------------");
+        }else{
+            dialogfailed.show();
+            System.out.println(answer + " <--------------------------------");
+        }
+    }
+
 }
