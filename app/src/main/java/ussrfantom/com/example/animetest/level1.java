@@ -17,6 +17,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -41,10 +47,42 @@ public class level1 extends AppCompatActivity {
     final int [] progress = {R.id.point1, R.id.point2, R.id.point3, R.id.point4, R.id.point5, R.id.point6, R.id.point7, R.id.point8, R.id.point9,
             R.id.point10, R.id.point11, R.id.point12, R.id.point13, R.id.point14, R.id.point15, R.id.point16, R.id.point17, R.id.point18, R.id.point19, R.id.point20};
 
+    public InterstitialAd mInterstitialAd;  //=================================================================================================================================================================
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.universal);
+
+
+        //=================================================================================================================================================================
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+
+
+        mInterstitialAd.setAdListener(new AdListener(){
+            @Override
+            public void onAdClosed() {
+                try {
+                    System.out.println("зашло но хер пойми как<---------------------------------------");
+                    Intent intent = new Intent(level1.this, LevelsActivity.class);
+                    startActivity(intent);
+                }catch (Exception e){
+                    //пусто
+                }
+            }
+        });
+        //=================================================================================================================================================================
+
+
+
         TextView text_levels = findViewById(R.id.text_levels);
         text_levels.setText(R.string.level_1);
 
@@ -154,20 +192,27 @@ public class level1 extends AppCompatActivity {
         });
 
 
+        //=================================================================================================================================================================
+
         //кнопка закрытия
         TextView btnclose3 = dialogfailed.findViewById(R.id.btnclose3);
         btnclose3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    //возврат в меню уровней
-                    Intent intent = new Intent(level1.this, LevelsActivity.class);
-                    startActivity(intent);
-                    finish();
-                }catch (Exception e){
+                if (mInterstitialAd.isLoaded()) {
+                    System.out.println("зашло но хер пойми как<------------+ реклама");
+                    mInterstitialAd.show();
+                } else {
+                    try {
+                        //возврат в меню уровней
+                        Intent intent = new Intent(level1.this, LevelsActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } catch (Exception e) {
 
+                    }
+                    dialogfailed.dismiss();//закрываем диалоговое окно
                 }
-                dialogfailed.dismiss();//закрываем диалоговое окно
             }
         });
 
@@ -176,38 +221,47 @@ public class level1 extends AppCompatActivity {
         buttoncontinue2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    Intent intet = new Intent(level1.this, LevelsActivity.class);
-                    startActivity(intet);
-                    finish();
-                }catch (Exception e){
+                if (mInterstitialAd.isLoaded()) {
+                    System.out.println("зашло но хер пойми как<------------+ реклама");
+                    mInterstitialAd.show();
+                } else {
+                    try {
+                        Intent intet = new Intent(level1.this, LevelsActivity.class);
+                        startActivity(intet);
+                        finish();
+                    } catch (Exception e) {
 
+                    }
+                    dialogfailed.dismiss();
                 }
-                dialogfailed.dismiss();
             }
         });
+        //=================================================================================================================================================================
 
 
-
-
-
-
-
-
-        //Кнопка назад в уровне
+        //Кнопка назад в уровне<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         Button buttonback  = findViewById(R.id.buttonBack);
         buttonback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    Intent intent = new Intent(level1.this, LevelsActivity.class);
-                    startActivity(intent);
-                    finish();
-                }catch (Exception e){
+                if (mInterstitialAd.isLoaded()){
+                    System.out.println("Что-то сработало, но хз что <------------------------------------");
+                    mInterstitialAd.show();
+                }else{
+                    try {
+                        Intent intent = new Intent(level1.this, LevelsActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } catch (Exception e) {
 
+                    }
                 }
             }
         });
+
+
+        //=================================================================================================================================================================
+
 
 
 
@@ -311,15 +365,19 @@ public class level1 extends AppCompatActivity {
         getData("0");
     }
 
-    //системная кнопка назад, для возврата к уровням
+    //системная кнопка назад, для возврата к уровням <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     @Override
     public void onBackPressed() {
-        try {
-            Intent intent = new Intent(level1.this, LevelsActivity.class);
-            startActivity(intent);
-            finish();
-        }catch (Exception e){
+        if (mInterstitialAd.isLoaded()){
+            mInterstitialAd.show();
+        }else {
+            try {
+                Intent intent = new Intent(level1.this, LevelsActivity.class);
+                startActivity(intent);
+                finish();
+            } catch (Exception e) {
 
+            }
         }
     }
 
@@ -333,7 +391,6 @@ public class level1 extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()){
-                            System.out.println("Успешно!<---------------------------------------------------");
                             QuerySnapshot querySnapshot = task.getResult();
                             if (querySnapshot == null) return;
                             for(QueryDocumentSnapshot documentSnapshot : querySnapshot){
@@ -366,10 +423,8 @@ public class level1 extends AppCompatActivity {
                 editor.commit();
             }
             dialogEnd.show();
-            System.out.println(answer + " <--------------------------------");
         }else{
             dialogfailed.show();
-            System.out.println(answer + " <--------------------------------");
         }
     }
 }

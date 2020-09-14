@@ -48,7 +48,7 @@ public class LevelsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try{
-                    if (level<=1) {
+                    if (level>=1) {
                         Intent intent = new Intent(LevelsActivity.this, level1.class);
                         startActivity(intent);
                         finish();
