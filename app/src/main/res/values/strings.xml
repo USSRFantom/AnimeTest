@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">AnimeTest</string>
+    <string name="exit">Выход</string>
+    <string name="test">Аниме Тест</string>
+    <string name="high_score_table">Рекорды</string>
+    <string name="chat">Чат</string>
+    <string name="info">Инфо</string>
 </resources>
