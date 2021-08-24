@@ -5,4 +5,12 @@
     <string name="high_score_table">Рекорды</string>
     <string name="chat">Чат</string>
     <string name="info">Инфо</string>
+    <string name="click_again_to_exit">Нажмите еще раз, чтобы выйти</string>
+    <string name="back">Назад</string>
+    <string name="text_level">Уровень:</string>
+    <string name="one">1</string>
+    <string name="comment">Комментарий:</string>
+    <string name="one_st_place">1 Место!</string>
+
+
 </resources>

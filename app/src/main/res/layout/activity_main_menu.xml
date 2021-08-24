@@ -20,23 +20,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/container1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_stroke_white_press_red"
-                android:text="@string/exit"
-                android:textColor="@color/white"
-                android:textSize="12sp" />
-        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/container2"
@@ -53,11 +37,13 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/imageViewTest"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="8"
-                    app:srcCompat="@drawable/logo" />
+                    android:onClick="onClick"
+                    app:srcCompat="@drawable/logo"
+                    tools:ignore="UsingOnClickInXml" />
 
                 <TextView
                     android:id="@+id/textViewTest"
@@ -81,10 +67,11 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/imageView5"
+                    android:id="@+id/imageViewTable"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="8"
+                    android:onClick="onClick"
                     app:srcCompat="@drawable/logo" />
 
                 <TextView
@@ -117,10 +104,11 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/imageView6"
+                    android:id="@+id/imageViewChat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="8"
+                    android:onClick="onClick"
                     app:srcCompat="@drawable/logo" />
 
                 <TextView
@@ -145,11 +133,13 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/imageView7"
+                    android:id="@+id/imageViewInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="8"
-                    app:srcCompat="@drawable/logo" />
+                    android:onClick="onClick"
+                    app:srcCompat="@drawable/logo"
+                    tools:ignore="UsingOnClickInXml" />
 
                 <TextView
                     android:id="@+id/textViewInfo"
