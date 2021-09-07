@@ -7,13 +7,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 import ussrfantom.com.example.animetest.R;
 import ussrfantom.com.example.animetest.adapters.WinnerAdapter;
+import ussrfantom.com.example.animetest.api.ApiFactory;
+import ussrfantom.com.example.animetest.api.ApiService;
 import ussrfantom.com.example.animetest.pojo.Table;
+import ussrfantom.com.example.animetest.pojo.WinnerTable;
 
 public class HighScoreTable extends AppCompatActivity {
 
@@ -27,21 +34,27 @@ public class HighScoreTable extends AppCompatActivity {
         setContentView(R.layout.activity_high_score_table);
         recyclerViewTable = findViewById(R.id.recyclerViewTable);
         adapter = new WinnerAdapter();
+        adapter.setTables(new ArrayList<Table>());
         recyclerViewTable.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewTable.setAdapter(adapter);
+        ApiFactory apiFactory = ApiFactory.getInstance();
+        ApiService apiService = apiFactory.getApiService();
+        apiService.getWinners()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<WinnerTable>() {
+                    @Override
+                    public void accept(WinnerTable winnerTable) throws Exception {
+                        adapter.setTables(winnerTable.getTable());
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        Toast.makeText(HighScoreTable.this, "Ошибка получения данных", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
-        List<Table> tables = new ArrayList<>();
-        Table table1 = new Table();
-        Table table2 = new Table();
-        table1.setName("Гриша");
-        table1.setLevel("1");
-        table1.setDescription("Бывает и такое");
-        table2.setName("Акакий");
-        table2.setLevel("2");
-        table2.setDescription("ацацуацуацуацуацуацуацуацу");
-        tables.add(table1);
-        tables.add(table2);
-        adapter.setTables(tables);
+
 
 
     }
