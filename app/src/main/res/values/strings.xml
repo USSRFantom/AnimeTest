@@ -11,6 +11,7 @@
     <string name="one">1</string>
     <string name="comment">Комментарий:</string>
     <string name="one_st_place">1 Место!</string>
+    <string name="error_internet">Ошибка получения данных</string>
 
 
 </resources>

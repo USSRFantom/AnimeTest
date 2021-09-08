@@ -10,10 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AnimeTest">
-        <activity android:name=".Screens.HighScoreTable"></activity>
-        <activity android:name=".Screens.MainMenu" />
+        <activity android:name=".Screens.scoreTable.HighScoreTable"></activity>
+        <activity android:name=".Screens.mainMenu.MainMenu" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Screens.SplashScreen">
+        <activity android:name=".Screens.splashScreen.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

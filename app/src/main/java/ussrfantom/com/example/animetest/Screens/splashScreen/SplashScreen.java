@@ -1,4 +1,4 @@
-package ussrfantom.com.example.animetest.Screens;
+package ussrfantom.com.example.animetest.Screens.splashScreen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import ussrfantom.com.example.animetest.MainActivity;
 import ussrfantom.com.example.animetest.R;
+import ussrfantom.com.example.animetest.Screens.mainMenu.MainMenu;
 
 public class SplashScreen extends AppCompatActivity {
 

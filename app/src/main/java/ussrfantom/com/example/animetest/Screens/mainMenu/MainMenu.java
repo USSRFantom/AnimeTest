@@ -1,16 +1,15 @@
-package ussrfantom.com.example.animetest.Screens;
+package ussrfantom.com.example.animetest.Screens.mainMenu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import ussrfantom.com.example.animetest.R;
+import ussrfantom.com.example.animetest.Screens.scoreTable.HighScoreTable;
 
 public class MainMenu extends AppCompatActivity {
 
