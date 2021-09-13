@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ussrfantom.com.example.animetest">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AnimeTest">
-        <activity android:name=".Screens.scoreTable.HighScoreTable"></activity>
+        <activity android:name=".Screens.ChatScreen.ChatActivity"></activity>
+        <activity android:name=".Screens.LoginScreen.LoginActivity" />
+        <activity android:name=".Screens.RegisterScreen.RegisterActivity" />
+        <activity android:name=".Screens.scoreTable.HighScoreTable" />
         <activity android:name=".Screens.mainMenu.MainMenu" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Screens.splashScreen.SplashScreen">

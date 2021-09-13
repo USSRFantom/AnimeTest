@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import ussrfantom.com.example.animetest.R;
+import ussrfantom.com.example.animetest.Screens.ChatScreen.ChatActivity;
 import ussrfantom.com.example.animetest.Screens.scoreTable.HighScoreTable;
 
 public class MainMenu extends AppCompatActivity {
@@ -53,6 +54,9 @@ public class MainMenu extends AppCompatActivity {
                 finish();
                 break;
             case R.id.imageViewChat:
+                intent = new Intent(MainMenu.this, ChatActivity.class);
+                startActivity(intent);
+                finish();
                 break;
             case R.id.imageViewInfo:
                 break;

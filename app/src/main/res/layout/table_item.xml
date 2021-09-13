@@ -19,11 +19,12 @@
             android:gravity="center"
             android:text="Филимонов Андрей"
             android:textColor="@color/dark_purple"
-            android:textSize="20sp"
+            android:textSize="10sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            tools:ignore="SmallSp" />
 
         <TextView
             android:id="@+id/textViewLevel"
@@ -32,11 +33,12 @@
             android:layout_marginTop="5dp"
             android:text="@string/text_level"
             android:textColor="@color/dark_purple"
-            android:textSize="20sp"
+            android:textSize="10sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewName" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewName"
+            tools:ignore="SmallSp" />
 
         <TextView
             android:id="@+id/textViewLevelNumber"
@@ -46,10 +48,11 @@
             android:layout_marginTop="5dp"
             android:text="@string/one"
             android:textColor="@color/dark_purple"
-            android:textSize="20sp"
+            android:textSize="10sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/textViewLevel"
-            app:layout_constraintTop_toBottomOf="@+id/textViewName" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewName"
+            tools:ignore="SmallSp" />
 
         <TextView
             android:id="@+id/textView4"
@@ -58,11 +61,12 @@
             android:layout_marginTop="5dp"
             android:text="@string/comment"
             android:textColor="@color/dark_purple"
-            android:textSize="20sp"
+            android:textSize="10sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewLevel" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewLevel"
+            tools:ignore="SmallSp" />
 
         <TextView
             android:id="@+id/textViewDescription"
@@ -71,16 +75,14 @@
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
-            android:text="Простота и легкость бытия! Вам не догнать семпая!"
-            android:textColor="@color/dark_purple"
-            android:textSize="20sp"
-            android:textStyle="bold"
             android:padding="5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textColor="@color/dark_purple"
+            android:textSize="10sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            tools:ignore="SmallSp" />
 
         <TextView
             android:id="@+id/textView6"
@@ -93,6 +95,18 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewWinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="2dp"
+            android:textColor="@color/dark_purple"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/textView6"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

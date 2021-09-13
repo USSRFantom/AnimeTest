@@ -38,10 +38,12 @@ public class WinnerAdapter extends  RecyclerView.Adapter<WinnerAdapter.WinnerVie
 
     @Override
     public void onBindViewHolder(@NonNull  WinnerViewHolder holder, int position) {
+        int a = position + 1;
         Table table = tables.get(position);
         holder.textViewLevelNumber.setText(table.getLevel());
         holder.textViewName.setText(table.getName());
         holder.textViewDescription.setText(table.getDescription());
+        holder.textViewWinner.setText(String.valueOf(a));
     }
 
     @Override
@@ -54,6 +56,7 @@ public class WinnerAdapter extends  RecyclerView.Adapter<WinnerAdapter.WinnerVie
         private TextView textViewName;
         private TextView textViewLevelNumber;
         private TextView textViewDescription;
+        private TextView textViewWinner;
 
 
 
@@ -64,6 +67,7 @@ public class WinnerAdapter extends  RecyclerView.Adapter<WinnerAdapter.WinnerVie
             textViewName = itemView.findViewById(R.id.textViewName);
             textViewLevelNumber = itemView.findViewById(R.id.textViewLevelNumber);
             textViewDescription = itemView.findViewById(R.id.textViewDescription);
+            textViewWinner = itemView.findViewById(R.id.textViewWinner);
         }
     }
 }
