@@ -1,6 +1,7 @@
 package ussrfantom.com.example.animetest.Screens.ChatScreen;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,11 +15,15 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import ussrfantom.com.example.animetest.MainActivity;
 import ussrfantom.com.example.animetest.R;
 import ussrfantom.com.example.animetest.adapters.MessagesAdapter;
 import ussrfantom.com.example.animetest.pojo.Message;
@@ -54,13 +59,23 @@ public class ChatActivity extends AppCompatActivity {
                 sendMessage();
             }
         });
+        db.collection("messages").orderBy("date").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable  QuerySnapshot queryDocumentSnapshots, @Nullable  FirebaseFirestoreException error) {
+
+                if (queryDocumentSnapshots != null) {
+                    List<Message> messages = queryDocumentSnapshots.toObjects(Message.class);
+                    adapter.setMessages(messages);
+                }
+            }
+        });
   }
 
   private void sendMessage(){
         String textOfMessage = editTextMessage.getText().toString().trim();
         if (!textOfMessage.isEmpty()){
             recyclerViewMessages.scrollToPosition(adapter.getItemCount() -1);
-            db.collection("messages").add(new Message(author, textOfMessage)).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+            db.collection("messages").add(new Message(author, textOfMessage, System.currentTimeMillis())).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                 @Override
                 public void onSuccess(DocumentReference documentReference) {
                     editTextMessage.setText("");
